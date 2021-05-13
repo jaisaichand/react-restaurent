@@ -1,0 +1,119 @@
+.restaurentImage {
+  width: 350px;
+  height: 248px;
+  border-radius: 0.8rem;
+  object-fit: cover;
+}
+
+.container80center {
+  max-width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainerrelative {
+  position: relative;
+}
+
+.cardbody {
+  width: 100%;
+}
+
+.restaurentTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.restaurentDesc {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 17px;
+  line-height: 2.4rem;
+  color: rgb(79, 79, 79);
+  margin: 0px 0px 0.4rem;
+  overflow: hidden;
+}
+
+.noshadow {
+  box-shadow: none !important;
+}
+
+.detailscontainer {
+  span {
+    color: #666666;
+  }
+}
+
+.bigdot {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.imagetag {
+  position: absolute;
+  bottom: 15px;
+  font-size: 15px;
+  left: 0px;
+  border-radius: 0px 4px 4px 0px;
+  padding: 2px 6px 2px 3px;
+  background: #ff092a;
+  color: white;
+}
+
+.reviewscontainer {
+  display: flex;
+  align-items: center;
+}
+.reviewtext {
+  margin-left: 8px;
+  color: #666666;
+  font-size: 12px;
+}
+
+.offertextt {
+  border-top: 1px solid rgba(211, 211, 211, 0.383);
+  color: #a10808;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.headercontainer {
+  height: 170px;
+  background: #171a29;
+  width: 100vw;
+  margin: auto;
+}
+
+.imageContainerrestaurent {
+  img {
+    width: 254px;
+    height: 165px;
+    object-fit: cover;
+  }
+}
+
+.mainholder {
+  max-width: 85%;
+}
+
+.max350 {
+  max-width: 350px;
+}
+
+.width350 {
+  width: 350px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container80center {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.allcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
