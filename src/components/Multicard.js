@@ -16,7 +16,7 @@ const MultiCard = (props) => {
     return (
         <div className="mr-2 mb-4" >
             <div className="max350 width350">
-                <div onClick={() => { clickedCard(props.data.key) }} className="w-100 ">
+                <div onClick={() => { clickedCard(props.data.key) }} className="w-100 cursorpointer">
                     <div className="imageContainerrelative">
                         <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt="" className="restaurentImage" />
                         {

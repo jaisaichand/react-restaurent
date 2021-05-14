@@ -24,7 +24,7 @@ const OrderItem = (props) => {
 
                     </div>
                     <div className="descriptionText">
-                        Freshly Cooked Kachhi Dum Biryani. pieces marinated in exotic blend of handpicked spices, finest long grain Basmati Rice, Saffron and aromatic Ghee. Served with Mirchi Ka Salan and Raita.
+                        Freshly Cooked Kachhi Dum Biryani. pieces marinated in exotic blend of handpicked spices, finest long grain Basmati Rice, Saffron .
                 </div>
                 </div>
 
