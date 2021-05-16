@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Store } from '../store/index';
+import { useSelector } from 'react-redux';
 
 function Header() {
 
   const [top, setTop] = useState(true);
+
+  const [cartcount, updateCartCount] = useState(0);
+
+  const cartlength = useSelector(state => state.cartlength)
+
+  let headerSubscription;
+
+  useEffect(() => {
+    updateCartCount(cartlength)
+  }, [cartlength])
+
+  useEffect(() => {
+    headerSubscription = Store.subscribe(async () => {
+      let newDat = await Store.getState();
+      console.log(newDat);
+      updateCartCount(newDat.cartlength)
+    });
+
+
+
+    return () => {
+      headerSubscription();
+    }
+  }, [])
 
   // detect whether user has scrolled the page down by 10px 
   useEffect(() => {
@@ -46,7 +72,7 @@ function Header() {
                 <ShoppingCartIcon fontSize="large" color="inherit" />
 
                 <div className="p-1 textCart bg-primary rounded-circle">
-                  <small className="text-white" >6</small>
+                  <small className="text-white" >{cartcount}</small>
                 </div>
               </div>
             </div>

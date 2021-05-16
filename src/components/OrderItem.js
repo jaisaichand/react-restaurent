@@ -1,11 +1,13 @@
 import React from 'react';
+import Counter from './Counter';
 
 const OrderItem = (props) => {
+    console.log(props)
     return (
         <div className="orderitemcontainer p-1 mb-2">
             <div className="d-flex align-items-center">
                 <div>
-                    <p className="orderitemname m-0">Nizami Chicken Biryani </p>
+                    <p className="orderitemname m-0">{props.data.name} </p>
                     <div className="d-flex align-items-center ">
                         <div className="vegOrNonVeg">
                             <div className="vegOutline">
@@ -13,7 +15,7 @@ const OrderItem = (props) => {
                             </div>
                         </div>
 
-                        <div className="mx-2">₹365</div>
+                        <div className="mx-2">₹{props.data.price}</div>
 
                         <div className="discountLabelDiv">
                             <span className="crimsontext"><small style={{ fontSize: '12px' }}><b>60% OFF</b></small></span>
@@ -24,16 +26,14 @@ const OrderItem = (props) => {
 
                     </div>
                     <div className="descriptionText">
-                        Freshly Cooked Kachhi Dum Biryani. pieces marinated in exotic blend of handpicked spices, finest long grain Basmati Rice, Saffron .
-                </div>
+                        {props.data.description}
+                    </div>
                 </div>
 
                 <div className="imagebtnContainer">
                     <div className="imageContainerRelative">
                         <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/q6q5klzvkmv8cmuuvkp1" alt="" />
-                        <div className="addBtnContainer">Add <span className="pluss">+</span> </div>
-
-
+                        <Counter data={{ quantity: props.data.quantity, wholedata: props.data, restaurent: props.restaurent }} />
                     </div>
                 </div>
 

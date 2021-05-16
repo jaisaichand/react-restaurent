@@ -6,8 +6,8 @@ const OrdersContainer = (props) => {
 
     return (
         <div className="">
-            {props.orders.map((val, ind) => {
-                return <OrderItem value={val} key={ind} />
+            {props.orders.menu.map((val, ind) => {
+                return <OrderItem data={val} restaurent={props.orders} key={props.orders.key + ind} />
             })}
         </div>
     )

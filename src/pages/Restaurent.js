@@ -6,7 +6,9 @@ import Header from '../partials/Header';
 
 import { useParams } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { Store } from '../store/index';
+
+import { useSelector, useStore } from 'react-redux';
 
 import StarIcon from '@material-ui/icons/Star';
 
@@ -17,13 +19,41 @@ function Restaurent() {
 
     const url = useParams();
 
-    const data = useSelector(state => state.restaurents)
+    const data = useSelector(state => state.restaurents);
+
+    const cartlength = useSelector(state => state.cartlength);
 
     console.log(data);
 
+    const storee = useStore();
+    console.log(storee)
+
+    const [showBtn, setShowBtn] = useState(0);
+
+
+
     const [finRes, changefinRes] = useState(null)
 
+    let subscription;
+
     useEffect(() => {
+
+        subscription = Store.subscribe(async () => {
+
+            let newDat = await Store.getState();
+            console.log(typeof (newDat))
+            setShowBtn(newDat.cartlength);
+            newDat.restaurents.forEach((val, ind) => {
+                if (val.key == url.id) {
+                    console.log(val)
+                    changefinRes({ ...val });
+                    console.log(val)
+                }
+            })
+
+        })
+
+        setShowBtn(cartlength);
 
         data.forEach((val, ind) => {
             if (val.key == url.id) {
@@ -31,13 +61,18 @@ function Restaurent() {
                 changefinRes(val);
             }
         })
-        console.log('...')
+        console.log('...');
+        return () => {
+            subscription();
+        }
     }, [])
+
+
 
 
     console.log(url);
 
-    const runn = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+
 
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
@@ -52,6 +87,8 @@ function Restaurent() {
                 <div className="w-100">
                     {finRes ? (
                         <div className="overallcontainer">
+
+                            {/* <p>{data[0].menu[0].quantity}</p> */}
                             <div className="headercontainer">
                                 <div className="mainholder p-2 d-flex justify-content-between align-items-center ">
                                     <div className="d-flex align-items-center" >
@@ -99,7 +136,18 @@ function Restaurent() {
                                     </div>
 
                                     <div className="middlebar" >
-                                        <OrdersContainer orders={runn} />
+                                        <OrdersContainer key={finRes} orders={finRes} />
+                                        {
+                                            showBtn > 0 ? (
+                                                <div className="w-100 btnMaincontainer">
+                                                    <div className="buttonHolder">
+                                                        <div className=" w-100 btn btn-success buttoncontinue">
+                                                            Checkout ({showBtn})
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            ) : (null)
+                                        }
                                     </div>
 
                                     <div className="rightbar">
