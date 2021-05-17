@@ -12,6 +12,18 @@ function Cart() {
 
             {/*  Page content */}
             <main className="flex-grow pt-5">
+                <div className="cartPage">
+                    <div className="sectionsContainer d-flex">
+                        <div className="firstContainer">
+                            <div className="ordersContainer w-100" >
+
+                            </div>
+                        </div>
+                        <div className="secondContainer">
+
+                        </div>
+                    </div>
+                </div>
             </main>
 
 

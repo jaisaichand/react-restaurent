@@ -353,6 +353,14 @@
 
 }
 
+.firstContainer{
+  flex: 2;
+}
+
+.secondContainer{
+  flex: 1;
+}
+
 @media only screen and (max-width: 800px) {
   .rightbar {
     display: none;
