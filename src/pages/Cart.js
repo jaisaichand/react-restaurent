@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from '../partials/Header';
+import CartContainer from '../components/CartContainer';
 
 function Cart() {
 
@@ -12,11 +13,13 @@ function Cart() {
 
             {/*  Page content */}
             <main className="flex-grow pt-5">
+                <hr />
+                <h2 className="text-center" style={{ color: "#000000b0" }} >YOUR CART</h2>
                 <div className="cartPage">
                     <div className="sectionsContainer d-flex">
                         <div className="firstContainer">
                             <div className="ordersContainer w-100" >
-
+                                <CartContainer />
                             </div>
                         </div>
                         <div className="secondContainer">

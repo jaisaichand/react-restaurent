@@ -116,16 +116,24 @@ export const storeReducer = (state = defaultState, action) => {
                                     if (val2.unique == action.payload.item.unique) {
                                         val2.quantity = val2.quantity + 1;
                                         totalState.cartlength = totalState.cartlength + 1;
-
+                                        let notinarray = false;
+                                        let notinarraycnt = 0;
 
                                         totalState.cartitems.forEach((valuee, indd) => {
                                             console.log(valuee)
                                             if (valuee.unique == action.payload.item.unique) {
+                                                notinarray = false;
                                                 valuee.quantity = valuee.quantity + 1;
+                                                notinarraycnt = notinarraycnt - 1;
                                             } else {
-                                                totalState.cartitems.push({ item: val2, restaurent: val });
+                                                notinarraycnt = notinarraycnt + 1;
+                                                notinarray = true;
                                             }
                                         })
+                                        if (notinarraycnt == totalState.cartitems.length) {
+
+                                            totalState.cartitems.push({ item: val2, restaurent: val });
+                                        }
                                         console.log(totalState);
                                         return totalState;
                                     }
@@ -152,12 +160,22 @@ export const storeReducer = (state = defaultState, action) => {
                                         val2.quantity = val2.quantity - 1;
                                         console.log(totalState);
                                         totalState.cartlength = totalState.cartlength - 1;
-                                        if (totalState.cartitems.length > 0) {
-                                            totalState.cartitems.forEach((valuee, indd) => {
-                                                console.log(valuee);
-                                            })
-                                            // totalState.cartitems.push({item:val2,restaurent:val});
-                                        }
+
+                                        let notinarray = false;
+                                        totalState.cartitems.forEach((valuee, indd) => {
+                                            console.log(valuee);
+                                            if (valuee.unique == action.payload.item.unique) {
+                                                notinarray = false;
+                                                valuee.quantity = valuee.quantity - 1;
+                                                if (valuee.quantity == 0) {
+                                                    totalState.cartitems.splice(indd, 1);
+                                                }
+                                            } else {
+                                                notinarray = true;
+                                            }
+                                        })
+                                        // totalState.cartitems.push({item:val2,restaurent:val});
+
                                         return totalState;
                                     }
                                 }

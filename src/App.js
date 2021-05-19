@@ -15,6 +15,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ResetPassword from './pages/ResetPassword';
 import Restaurent from './pages/Restaurent';
+import Cart from './pages/Cart';
 
 function App() {
 
@@ -55,6 +56,11 @@ function App() {
         <Route path="/restaurent/:id">
           <Restaurent />
         </Route>
+
+        <Route path="/cart">
+          <Cart />
+        </Route>
+
       </Switch>
     </>
   );
